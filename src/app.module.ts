@@ -4,14 +4,16 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ItemsModule } from './items/items.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     ItemsModule,
     GraphQLModule.forRoot({
     autoSchemaFile: 'schema.gql',
   }),
-    MongooseModule.forRoot('mongodb://localhost:27017/itemDB')
+    MongooseModule.forRoot(process.env.MONGODB_URL)
   ],
   controllers: [AppController],
   providers: [AppService],
