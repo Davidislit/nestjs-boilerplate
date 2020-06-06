@@ -1,0 +1,25 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  id: String!
+  name: String!
+  amount: Float!
+  category: String!
+}
+
+type Query {
+  hello: String!
+  items: [Item!]!
+}
+
+type Mutation {
+  createItem(input: ItemInput!): Item!
+}
+
+input ItemInput {
+  name: String!
+  amount: Float!
+  category: String!
+}
