@@ -5,15 +5,18 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ItemsModule } from './items/items.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     ItemsModule,
     GraphQLModule.forRoot({
-    autoSchemaFile: 'schema.gql',
-  }),
-    MongooseModule.forRoot(process.env.MONGODB_URL)
+      autoSchemaFile: 'schema.gql',
+      context: ({ req, res }) => ({ req, res }),
+    }),
+    MongooseModule.forRoot(process.env.MONGODB_URL),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

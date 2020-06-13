@@ -10,6 +10,13 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
-  }
+    "incremental": true,
+    "@typescript-eslint/no-this-alias": [
+    "error",
+    {
+      "allowDestructuring": true, // Allow `const { props, state } = this`; false by default
+      "allowedNames": ["self"] // Allow `const self = this`; `[]` by default
+    }
+  ]
+  },
 }

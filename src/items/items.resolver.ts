@@ -1,13 +1,11 @@
-import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
-import { ItemService } from "./items.service";
-import { ItemInput } from "./inputs/item.input";
-import { Item } from "./interfaces/item.interface";
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { ItemService } from './items.service';
+import { ItemInput } from './inputs/item.input';
+import { Item } from './interfaces/item.interface';
 
 @Resolver()
 export class ItemResolver {
-  constructor(
-    private itemsService: ItemService,
-  ) {}
+  constructor(private itemsService: ItemService) {}
 
   @Query(() => String)
   async hello(): Promise<string> {
@@ -20,9 +18,7 @@ export class ItemResolver {
   }
 
   @Mutation(() => Item)
-  async createItem(
-      @Args('input') input: ItemInput
-  ): Promise<Item> {
-      return await this.itemsService.create(input)
+  async createItem(@Args('input') input: ItemInput): Promise<Item> {
+    return await this.itemsService.create(input);
   }
 }

@@ -5,9 +5,9 @@ import { ItemSchema, Item } from './items.schema';
 import { ItemService } from './items.service';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: Item.name, schema: ItemSchema}])],
-    providers: [ItemResolver,  ItemService]
+  imports: [
+    MongooseModule.forFeature([{ name: Item.name, schema: ItemSchema }]),
+  ],
+  providers: [ItemResolver, ItemService],
 })
-export class ItemsModule {
-
-}
+export class ItemsModule {}

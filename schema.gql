@@ -9,17 +9,38 @@ type Item {
   category: String!
 }
 
+type User {
+  email: String!
+  username: String!
+  password: String!
+  tokenVersion: Float!
+}
+
 type Query {
   hello: String!
   items: [Item!]!
+  me: User!
 }
 
 type Mutation {
   createItem(input: ItemInput!): Item!
+  register(user: UserRegisterInput!): User!
+  login(login: UserLoginInput!): String!
 }
 
 input ItemInput {
   name: String!
   amount: Float!
   category: String!
+}
+
+input UserRegisterInput {
+  email: String!
+  username: String!
+  password: String!
+}
+
+input UserLoginInput {
+  username: String!
+  password: String!
 }
