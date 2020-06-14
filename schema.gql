@@ -26,6 +26,8 @@ type Mutation {
   createItem(input: ItemInput!): Item!
   register(user: UserRegisterInput!): User!
   login(login: UserLoginInput!): String!
+  logout: Boolean!
+  revokeRefreshForUser(userId: String!): Boolean!
 }
 
 input ItemInput {

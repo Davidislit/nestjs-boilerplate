@@ -41,4 +41,13 @@ export class UserService {
         return await this.userModel.findById(id);
     }
 
+    async incrementTokenVersion(id: string): Promise<boolean> {
+        const user = await this.userModel.findById(id);
+        await user.update({ 
+            ...user,
+            tokenVersion: user.tokenVersion + 1
+        })
+        return true;
+    }
+
 }
