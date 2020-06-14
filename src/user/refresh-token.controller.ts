@@ -9,7 +9,6 @@ import { RefreshTokenResponse } from './interfaces/refresh-token.interface';
 export class RefreshTokenController {
     constructor(private userServier: UserService, private authServier: AuthService) {}
     @Post()
-    @HttpCode(200)
     async refreshToken(@Req() req: Request, @Res() res: Response): Promise<Response<RefreshTokenResponse>> {
         const token = req.cookies.jid;
         console.log(`token ${token}`);
